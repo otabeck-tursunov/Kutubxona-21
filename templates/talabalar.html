@@ -1,0 +1,9 @@
+<h4>Talabalar ro'yxati:</h4>
+
+{% for talaba in talabalar %}
+  <p>{{ talaba.id }}.
+    <a href="/talabalar/{{ talaba.id }}/">
+      {{ talaba.ism }}
+    </a>
+  </p>
+{% endfor %}
