@@ -1,0 +1,10 @@
+<h1>Recordlar tarixi:</h1>
+
+<form>
+    <input type="text" name="search">
+    <button>Qidirish</button>
+</form>
+
+{% for record in recordlar %}
+<p>{{ record.id }}. {{ record.talaba.ism }}: {{ record.kitob.nom }}</p>
+{% endfor %}

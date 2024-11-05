@@ -1,9 +1,18 @@
 <h4>Talabalar ro'yxati:</h4>
 
+<form>
+    <input type="text" name="search">
+    <button>Qidirish</button>
+</form>
+
 {% for talaba in talabalar %}
-  <p>{{ talaba.id }}.
+<p>{{ talaba.id }}.
     <a href="/talabalar/{{ talaba.id }}/">
-      {{ talaba.ism }}
+        {{ talaba.ism }}
     </a>
-  </p>
+    <!--  Delete  -->
+    <a href="/talabalar/{{ talaba.id }}/delete/">
+        <button>Delete</button>
+    </a>
+</p>
 {% endfor %}
