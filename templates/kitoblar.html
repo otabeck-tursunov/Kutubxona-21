@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitoblar Ro'yxati</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .kitob {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .kitob p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .kitob button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .kitob button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form select {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Kitoblar Ro'yxati</h3>
+        <hr>
+
+        {% for kitob in kitoblar %}
+        <div class="kitob">
+            <p>{{ forloop.counter }}. {{ kitob.nom }}</p>
+            <a href="/kitoblar/{{ kitob.id }}/update/">
+                <button>Yangilash</button>
+            </a>
+        </div>
+        {% endfor %}
+
+        <hr>
+        <h3>Yangi Kitob Qo'shish:</h3>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <button>Qo'shish</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
